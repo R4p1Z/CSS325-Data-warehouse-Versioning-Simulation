@@ -1,5 +1,6 @@
 <?php
-  require_once `connect.php`;
+  session_start();
+  require_once 'connect.php';
 ?>
 
 <!DOCTYPE html>
@@ -8,28 +9,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <h2>Data Warehouse Versioning Simulator</h2>
     <div class="columns">
-      <div class="column">
-        <h3>Add dimension level</h3>
-        <label for="addDL1">Query box:</label>
-        <input type="text" id="addDL1" name="addDL1" placeholder="pls fill in">
-        <div>
-          <input type="submit" class="button btn-small" value="submit">
+      <form method="post" action="addDprocess.php">
+        <div class="column">
+          <h3>Add dimension level</h3>
+          <label for="addDL1">Query box:</label>
+          <input type="text" id="addDL1" name="addDL1" placeholder="pls fill in">
+          <div>
+            <input type="submit" class="button btn-small" value="submit">
+          </div>
         </div>
-      </div>
-      <div class="column">
-        <h3>Add dimension table</h3>
-        <label for="addD2">Query box:</label>
-        <input type="text" id="addD2" name="addD2" placeholder="pls fill in">
-        <div>
-          <input type="submit" class="button btn-small" value="submit">
+      </form>
+
+      <form method="post" action="addDprocess.php">
+        <div class="column">
+          <h3>Add dimension table</h3>
+          <label for="addD2">Query box:</label>
+          <input type="text" id="Dname" name="Dname" placeholder="pls fill the dimension name">
+          <input type="text" id="addD2" name="addD2" placeholder="pls fill in">
+          <div>
+            <input type="submit" class="button btn-small" value="submit">
+          </div>
         </div>
-      </div>
+      </form>
+
       <div class="column">
         <h3>Update dimension level</h3>
         <label for="upDL1">Query box:</label>
@@ -38,6 +46,7 @@
           <input type="submit" class="button btn-small" value="submit">
         </div>
       </div>
+
       <div class="column">
         <h3>Update dimension table</h3>
         <label for="upD2">Query box:</label>
@@ -46,6 +55,7 @@
           <input type="submit" class="button btn-small" value="submit">
         </div>
       </div>
+
       <div class="column">
         <h3>Delete dimension level</h3>
         <label for="delDL1">Query box:</label>
@@ -54,6 +64,7 @@
           <input type="submit" class="button btn-small" value="submit">
         </div>
       </div>
+
       <div class="column">
         <h3>Delete dimension table</h3>
         <label for="delD2">Query box:</label>
@@ -62,6 +73,7 @@
           <input type="submit" class="button btn-small" value="submit">
         </div>
       </div>
+      
       <div class="column">
         <label for="dropdown">Select an option:</label>
         <select id="dropdown" name="dropdown">

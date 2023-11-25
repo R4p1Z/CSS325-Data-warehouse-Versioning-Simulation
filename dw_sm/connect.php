@@ -1,5 +1,5 @@
 <?php
-$connection = mysqli_connect('localhost', 'root', 'root', 'cake-shop-db');
+$connection = mysqli_connect('localhost', 'root', 'root', 'dw_sim');
 if(!$connection){
 	echo "Error: Unable to connect to MySQL." . PHP_EOL;
     echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
