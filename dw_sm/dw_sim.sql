@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 25, 2023 at 06:23 PM
+-- Generation Time: Nov 26, 2023 at 10:17 AM
 -- Server version: 5.7.24
 -- PHP Version: 8.0.1
 
@@ -159,6 +159,7 @@ INSERT INTO `revenue` (`Revenue_ID`, `Dealer_ID`, `Model_ID`, `Branch_ID`, `Date
 --
 
 CREATE TABLE `ver_tab` (
+  `id` int(11) NOT NULL,
   `verNum` int(11) NOT NULL,
   `time_stamp` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -167,8 +168,8 @@ CREATE TABLE `ver_tab` (
 -- Dumping data for table `ver_tab`
 --
 
-INSERT INTO `ver_tab` (`verNum`, `time_stamp`) VALUES
-(1, '2023-11-26 01:22:32');
+INSERT INTO `ver_tab` (`id`, `verNum`, `time_stamp`) VALUES
+(1, 1, '2023-11-26 01:22:32');
 
 --
 -- Indexes for dumped tables
@@ -220,6 +221,7 @@ ALTER TABLE `revenue`
 -- Indexes for table `ver_tab`
 --
 ALTER TABLE `ver_tab`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `time_stamp` (`time_stamp`);
 
 --
@@ -231,6 +233,12 @@ ALTER TABLE `ver_tab`
 --
 ALTER TABLE `change_tab`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `ver_tab`
+--
+ALTER TABLE `ver_tab`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
