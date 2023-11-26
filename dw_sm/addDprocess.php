@@ -14,7 +14,6 @@
     
     
     date_default_timezone_set('Asia/Bangkok');
-
     $now = new DateTime();
     $time_stamp = $now->format('Y-m-d H:i:s');
     $Dimname = $_POST['Dname'];
@@ -37,8 +36,10 @@
     $addVer = "INSERT INTO `ver_tab` (`verNum`, `time_stamp`) VALUES ('$verNum', '$time_stamp');";
     $addVerReal = mysqli_query($connection, $addVer);
 
-
-  
+    $DLname = $connection->query("DESCRIBE $Dimname");
+    while ($row = $result->fetch_assoc()) {
+      echo $row['Field'] . ", ";
+    }
   }
   //header('location: home.php');
 ?>

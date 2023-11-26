@@ -75,12 +75,20 @@
       </div>
       
       <div class="column">
-        <label for="dropdown">Select an option:</label>
-        <select id="dropdown" name="dropdown">
-          <?php
-          
-          ?>
-        </select>
+        <form method="post" action="jump.php">
+          <label for="dropdown">Select an option:</label>
+            <select id="dropdown" name="dropdown">
+              <?php
+                $sql = "SELECT verNum FROM `ver_tab`;";
+                $result = $connection->query($sql);
+
+                while ($row = $result->fetch_assoc()) {
+                  echo "<option value=\"" . $row['verNum'] . "\">Version " . $row['verNum'] . "</option>";
+                }
+              ?>
+            </select>
+            <input type="submit" class="button btn-small" value="Submit Version">
+        </form>
       </div>
     </div>
   </div>
