@@ -1,43 +1,42 @@
-<?php
-  require_once 'connect.php';
-
-// Query to fetch data from the database
-$sql = "SELECT c FROM gg";
-$result = $connection->query($sql);
-
-// Check if there are rows in the result set
-if ($result->num_rows > 0) {
-    // Initialize an array to store the data
-    $data = array();
-
-    // Fetch data from each row and add it to the array
-    while ($row = $result->fetch_assoc()) {
-        $data[] = json_decode($row['c'], true); // Assuming 'c' is the JSON column
-    }
-
-    // Encode the array as a JSON string
-    $json_data = json_encode($data);
-
-    // Output the JSON data
-    echo $json_data;
-} else {
-    echo "No data found.";
-}
-
-// Close the database connection
-$conn->close();
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Version Selector</title>
 </head>
 <body>
-  <input type="text" name="box">
-  <input type="submit" name="button">
+    <form action="process.php" method="post">
+        <label for="version">Select Version:</label>
+        <select name="version" id="version">
+            <?php
+            // Connect to your MySQL database (replace with your actual connection details)
+            $servername = "your_servername";
+            $username = "your_username";
+            $password = "your_password";
+            $dbname = "your_dbname";
+
+            $conn = new mysqli($servername, $username, $password, $dbname);
+
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            // Fetch version numbers from the database
+            $sql = "SELECT version_number FROM versions";
+            $result = $conn->query($sql);
+
+            // Populate the dropdown with version numbers
+            while ($row = $result->fetch_assoc()) {
+                echo "<option value=\"" . $row['version_number'] . "\">Version " . $row['version_number'] . "</option>";
+            }
+
+            // Close the database connection
+            $conn->close();
+            ?>
+        </select>
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>

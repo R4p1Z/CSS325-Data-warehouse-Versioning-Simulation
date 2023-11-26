@@ -31,7 +31,7 @@
           <h3>Add dimension table</h3>
           <label for="addD2">Query box:</label>
           <input type="text" id="Dname" name="Dname" placeholder="pls fill the dimension name">
-          <input type="text" id="addD2" name="addD2" placeholder="pls fill in">
+          <input type="text" id="addD2" name="addD2" placeholder="pls query a new dimension">
           <div>
             <input type="submit" class="button btn-small" value="submit">
           </div>
@@ -77,9 +77,9 @@
       <div class="column">
         <label for="dropdown">Select an option:</label>
         <select id="dropdown" name="dropdown">
-          <option value="option1">Version 1</option>
-          <option value="option2">Version 2</option>
-          <option value="option3">Version 3</option>
+          <?php
+          
+          ?>
         </select>
       </div>
     </div>
